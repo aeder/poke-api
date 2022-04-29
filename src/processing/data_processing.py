@@ -1,7 +1,8 @@
 import collections
 import statistics
 from typing import Any, List
-from ..services.pokeapi import BerryAPI
+from ..services.pokeapi import PokeAPI
+
 
 class BerryGenerator():
     _counter: int = 1
@@ -35,8 +36,7 @@ class BerryGenerator():
             print(e)
 
 
-def get_all_berry_data():
-    berry_api = BerryAPI()
+def get_all_berry_data(berry_api=PokeAPI):
     berry_iterator = BerryGenerator(berry_api)
     berry_data_list = [berry for berry in berry_iterator.get()]
     return berry_data_list
@@ -56,7 +56,7 @@ def process_berry_data(berry_data_list):
         # time, float
         "variance_growth_time": statistics.variance(berry['growth_time'] for berry in berry_data_list),
         # time, float
-        "mean_growth_time": statistics.mean(berry['growth_time'] for berry in berry_data_list),
+        "mean_growth_time": float(statistics.mean(berry['growth_time'] for berry in berry_data_list)),
         # time, {growth_time: frequency, ...}
         "frequency_growth_time": [{'growth_time': key, 'frequency': value} for key, value in frequency_data.items()],
     }

@@ -16,4 +16,10 @@ Setup
 
 Running
 
-* Start the flask app server
+Start the flask app server
+
+Testing
+
+Run the testing commnad from the root directory
+
+    python -m pytest tests

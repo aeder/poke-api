@@ -4,7 +4,7 @@ import json
 from ..config.config import Config
 
 
-class BerryAPI():
+class PokeAPI():
     def get_berry_data(self, berry_data_url):
         try:
             print(f"Fetching {berry_data_url}")
