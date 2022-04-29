@@ -10,12 +10,12 @@ class BerryGenerator():
     _collection: List[Any] = None
 
     def __init__(self, api, limit: int = 20, offset: int = 20) -> None:
+        print(limit, offset)
         self._counter = 0
         self._offset = offset
         self._limit = limit
         self._api = api
-        self._collection = api.get_berry_url_list(
-            limit, self._offset * self._offset_multiplier)
+        self._collection = api.get_berry_url_list(self._limit, self._offset * self._offset_multiplier)
 
     def get(self):
         try:
@@ -36,7 +36,7 @@ class BerryGenerator():
             print(e)
 
 
-def get_all_berry_data(berry_api=PokeAPI):
+def get_all_berry_data(berry_api=PokeAPI()):
     berry_iterator = BerryGenerator(berry_api)
     berry_data_list = [berry for berry in berry_iterator.get()]
     return berry_data_list
