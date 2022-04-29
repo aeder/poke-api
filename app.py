@@ -1,5 +1,5 @@
 from flask import Flask, make_response
-from src.poke_api.processing.data_processing import get_all_berry_data, process_berry_data
+from src.processing.data_processing import get_all_berry_data, process_berry_data
 
 app = Flask(__name__)
 
